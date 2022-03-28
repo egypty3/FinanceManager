@@ -1,0 +1,23 @@
+﻿@model FinanceManager.Domain.Entities.Summary
+@{
+    ViewBag.Title = "Summary - selected month";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajaxOpts = new AjaxOptions { UpdateTargetId = "details" };
+}
+
+<div class="container justify-content-center">
+    <h3>Financial summary of the month @Model.Date</h3>
+    <div class="mb-4">
+        @ViewBag.summaryMessage
+    </div>
+    <table class="table">
+        <tr><th>Type</th><th>Total sum</th><th>Number of records</th><th>Ratio of total sum to the amount of revenues</th><th>Actions</th></tr>
+        <tr><td>Expenses</td><td class="text-center">@Model.ExpensesSum.ToString("c")</td><td class="text-center">@Model.ExpensesRecords</td><td class="text-center">@Model.ExpensesToIncomes %</td><td>@Ajax.ActionLink("Details", "ExpenseDetails", "Summary", new { date = Model.Date }, ajaxOpts, new { @class = "btn btn-info" })</td></tr>
+        <tr><td>Revenue</td><td class="text-center">@Model.IncomesSum.ToString("c")</td><td class="text-center">@Model.IncomesRecords</td><td class="text-center">@Model.Incomes %</td><td>@Ajax.ActionLink("Details", "Details", "Summary", new { date = Model.Date}, ajaxOpts, new { @class = "btn btn-info" })</td></tr>
+        <tr><td>Savings</td><td class="text-center">@Model.SavingsSum.ToString("c")</td><td class="text-center">@Model.SavingsRecords</td><td class="text-center">@Model.SavingsToIncomes %</td><td>@Ajax.ActionLink("Details", "Details", "Summary", new { date = Model.Date }, ajaxOpts, new { @class = "btn btn-info" })</td></tr>
+    </table>
+    <div id="details">
+
+    </div>
+</div>
+

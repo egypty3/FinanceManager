@@ -1,0 +1,13 @@
+﻿
+@{
+    Layout = null;
+}
+
+@Html.ActionLink("List of expenses", "Index", "Expense") |
+@Html.ActionLink("Income list", "Index", "Income") |
+@Html.ActionLink("Savings list", "Index", "Saving") |
+@Html.ActionLink("Summary", "Index", "Summary") |
+<br /><br />
+@Html.ActionLink("Manage your expense categories", "Index", "Category", new { type = "Expense" }, null) |
+@Html.ActionLink("Managing revenue categories", "Index", "Category", new { type = "Income" }, null) |
+@Html.ActionLink("Management of savings categories", "Index", "Category", new { type = "Saving" }, null)
